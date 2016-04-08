@@ -37,10 +37,15 @@ module AdvisorInfo
         individual[:result] = doc.css('.result-panel').text
       else
         doc = doc.css('.bcrow')
-        info = doc.css('.listViewItemStyle').text.split("\r\n").reject!(&:empty?)
         individual[:name] = doc.css('.summary-displayname').text
-        individual[:employer] = info.first.strip
-        individual[:IARD] = info[1].strip.match(/#\S(\d+)/)[1]
+
+        if doc.css('.bcrow').css('#ctl00_cphMain_uCurrentEmployments_lblNoEmp').present?
+          individual[:employer] = doc.css('.bcrow').css('#ctl00_cphMain_uCurrentEmployments_lblNoEmp').text
+        elsif
+          info = doc.css('.listViewItemStyle').text.split("\r\n").reject!(&:empty?)
+          individual[:employer] = info.first.strip
+          individual[:IARD] = info[1].strip.match(/#\S(\d+)/)[1]
+        end
       end
       if opts[:CSV]
         AdvisorInfo.generate_csv(individual)
