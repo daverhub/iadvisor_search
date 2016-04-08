@@ -49,6 +49,7 @@ gem 'capybara', group: [:development, :test]
 gem 'factory_girl', group: [:development, :test]
 gem 'valid_attribute', group: [:development, :test]
 gem 'devise'
+gem 'slim-rails'
 gem 'rest-client'
 gem 'bootstrap-sass'
 gem 'nokogiri'

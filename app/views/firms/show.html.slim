@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @firm.name
+p
+  strong Status:
+  = @firm.status
+p
+  strong Juristiction:
+  = @firm.juristiction
+p
+  strong Registration status:
+  = @firm.registration_status
+p
+  strong Effective date:
+  = @firm.effective_date
+
+= link_to 'Edit', edit_firm_path(@firm)
+'|
+= link_to 'Back', firms_path

@@ -1,0 +1,24 @@
+= form_for @firm do |f|
+  - if @firm.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@firm.errors.count, "error")} prohibited this firm from being saved:"
+      ul
+        - @firm.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :status
+    = f.text_field :status
+  .field
+    = f.label :juristiction
+    = f.text_field :juristiction
+  .field
+    = f.label :registration_status
+    = f.text_field :registration_status
+  .field
+    = f.label :effective_date
+    = f.date_select :effective_date
+  .actions = f.submit

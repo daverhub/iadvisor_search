@@ -1,0 +1,29 @@
+h1 Listing firms
+
+table
+  thead
+    tr
+      th Name
+      th Status
+      th Juristiction
+      th Registration status
+      th Effective date
+      th
+      th
+      th
+
+  tbody
+    - @firms.each do |firm|
+      tr
+        td = firm.name
+        td = firm.status
+        td = firm.juristiction
+        td = firm.registration_status
+        td = firm.effective_date
+        td = link_to 'Show', firm
+        td = link_to 'Edit', edit_firm_path(firm)
+        td = link_to 'Destroy', firm, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Firm', new_firm_path

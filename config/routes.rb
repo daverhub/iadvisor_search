@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :individuals
+  resources :firms
+  root 'searches#index'
+  get 'search', to: 'searches#index', as: :search
+  get 'download_csv', to: 'searches#download_csv', as: :download_csv
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

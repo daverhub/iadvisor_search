@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @individual.name
+p
+  strong Employer:
+  = @individual.employer
+p
+  strong Iard:
+  = @individual.IARD
+p
+  strong Result:
+  = @individual.result
+p
+  strong Crd:
+  = @individual.CRD
+
+= link_to 'Edit', edit_individual_path(@individual)
+'|
+= link_to 'Back', individuals_path

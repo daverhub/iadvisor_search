@@ -1,0 +1,65 @@
+.container
+  p
+    | Search Advisors or Firm
+  = form_for search_path, method: :get do 
+    div
+      = label_tag 'Individual search by ID#'  
+      = text_field_tag :IARD
+    div
+      = label_tag 'Firm search by ID#'
+      = text_field_tag :CRD
+    div
+      = label_tag 'Ouput CSV'
+      = check_box_tag :CSV
+    = submit_tag('Search')
+.row
+  - if @results
+    h3 Search Results:
+    table
+      thead
+        tr
+      - @results.each do |key,_|
+          th = key
+      tbody
+        tr
+      - @results.each do |_, value|
+          td = value
+      
+    .row
+     - if @download_csv
+        = link_to 'Download CSV', :controller => :searches, :action => :download_csv
+
+.row
+  - if @firms.present?
+      h3 Firms:
+      table
+        thead
+          tr
+            th Name
+            th status
+            th juristiction
+            th effective_date
+        tbody
+        - @firms.each do |firm|
+          tr
+            td = firm.name
+            td = firm.status
+            td = firm.juristiction
+            td = firm.effective_date
+
+.row
+  - if @individuals.present?
+      h3 Individual Advisors:
+      table
+        thead
+          tr
+            th Name
+            th Employer
+            th ID
+        tbody
+        - @individuals.each do |advisor|
+          tr
+            td = advisor.name
+            td = advisor.employer
+            td = advisor.IARD
+

@@ -1,0 +1,29 @@
+h1 Listing individuals
+
+table
+  thead
+    tr
+      th Name
+      th Employer
+      th Iard
+      th Result
+      th Crd
+      th
+      th
+      th
+
+  tbody
+    - @individuals.each do |individual|
+      tr
+        td = individual.name
+        td = individual.employer
+        td = individual.IARD
+        td = individual.result
+        td = individual.CRD
+        td = link_to 'Show', individual
+        td = link_to 'Edit', edit_individual_path(individual)
+        td = link_to 'Destroy', individual, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Individual', new_individual_path
