@@ -13,21 +13,22 @@
       = check_box_tag :CSV
     = submit_tag('Search')
 .row
-  - if @results
-    h3 Search Results:
-    table
-      thead
-        tr
-      - @results.each do |key,_|
-          th = key
-      tbody
-        tr
-      - @results.each do |_, value|
-          td = value
-      
-    .row
-     - if @download_csv
-        = link_to 'Download CSV', :controller => :searches, :action => :download_csv
+  - if @results_arr
+    - @results_arr.each do |result|
+      h3 Search Results:
+      table
+        thead
+          tr
+        - result.each do |key,_|
+            th = key
+        tbody
+          tr
+        - result.each do |_, value|
+            td = value
+        
+      .row
+       - if @download_csv
+          = link_to 'Download CSV', :controller => :searches, :action => :download_csv
 
 .row
   - if @firms.present?
