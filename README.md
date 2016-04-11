@@ -18,6 +18,7 @@ Rails version '4.2.3'
 2. Outputs as hash of resutls
 3. Options to export to CSV
 4. Saves search results to database
+5. Search multiple id's
 
 
 
