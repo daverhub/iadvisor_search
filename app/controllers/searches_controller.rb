@@ -34,12 +34,12 @@ class SearchesController < ApplicationController
   end
   def search_firm(id, csv)
     search_result = AdvisorInfo::Search.firm(id, csv)
-    Firm.find_or_create_by(id)
+    Firm.find_or_create_by(search_result)
     search_result
   end
   def search_individual(id, csv)
     search_result =  AdvisorInfo::Search.individual(id, csv)
-    Individual.find_or_create_by(id)
+    Individual.find_or_create_by(search_result)
     search_result
   end
 end
